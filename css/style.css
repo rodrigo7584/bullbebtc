@@ -101,15 +101,15 @@ p span {
   background: linear-gradient(90deg, #8217cd, #291349);
   padding: 0.2rem;
   border-radius: 2rem;
-  animation: teste 3s linear infinite ;
+  animation: teste 3s linear infinite;
 }
 @keyframes teste {
-  0%{
+  0% {
     background: linear-gradient(90deg, #8217cd, #291349);
     background-position: 0%;
   }
 
-  100%{
+  100% {
     background: linear-gradient(90deg, #8217cd, #291349);
     background-position: 100%;
   }
@@ -232,26 +232,26 @@ header.menu .btn-mobile-menu {
 
 /*end header*/
 /*home*/
-section.home img.icon-floating{
+section.home img.icon-floating {
   position: absolute;
   z-index: 10;
   width: 10rem;
   left: 1rem;
   z-index: 1;
   bottom: -8rem;
-  filter: drop-shadow(0rem 0rem 1em rgba(255,255,255,1)) blur(7px);
+  filter: drop-shadow(0rem 0rem 1em rgba(255, 255, 255, 1)) blur(7px);
   animation: floating-home 3s ease-in-out infinite;
 }
 @keyframes floating-home {
-    0%{
-      transform: translate(0rem, 0rem);
-    }
-    50%{
-      transform: translate(4rem, -6rem);
-    }
-    100%{
-      transform: translate(0rem, 0rem);
-    }
+  0% {
+    transform: translate(0rem, 0rem);
+  }
+  50% {
+    transform: translate(4rem, -6rem);
+  }
+  100% {
+    transform: translate(0rem, 0rem);
+  }
 }
 section.home {
   position: relative;
@@ -283,7 +283,19 @@ section.home .illustration-home {
 /*end home*/
 /*details*/
 section.details {
+  position: relative;
   padding: 2rem 0;
+}
+section.details::after {
+  content: '';
+  background: url('../img/details-bottom.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 5rem;
+  bottom: -4.99rem;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
 }
 section.details h2 {
   text-align: center;
@@ -308,35 +320,40 @@ section.details .box-gradient-border-content p {
 /*app*/
 section.app {
   position: relative;
-  padding: 2rem 0;
+  padding: 8rem 0;
+  background: #140f22;
+  background-image: url('../img/bg-squares2.png');
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-section.app .icon-floating{
+section.app .icon-floating {
   position: absolute;
   width: 10rem;
   bottom: -2rem;
   right: 2rem;
-  filter: drop-shadow(0rem 0rem 3em rgba(255,255,255,1)) blur(5px);
-  z-index: 1;
+  filter: drop-shadow(0rem 0rem 3em rgba(255, 255, 255, 1)) blur(5px);
+  z-index: 2;
   animation: floating-app 3s ease-in-out infinite;
 }
 @keyframes floating-app {
-  0%{
+  0% {
     transform: translate(0rem, 0rem);
-    filter: drop-shadow(0rem 0rem 3em rgba(255,255,255,1)) blur(5px);
+    filter: drop-shadow(0rem 0rem 3em rgba(255, 255, 255, 1)) blur(5px);
   }
-  35%{
-    filter: drop-shadow(0rem 0rem 2em rgba(255,255,255,1)) blur(5px);
+  35% {
+    filter: drop-shadow(0rem 0rem 2em rgba(255, 255, 255, 1)) blur(5px);
   }
-  50%{
-    filter: drop-shadow(0rem 0rem 3em rgba(255,255,255,1)) blur(5px);
-    transform: translate(-6rem,-2rem);
+  50% {
+    filter: drop-shadow(0rem 0rem 3em rgba(255, 255, 255, 1)) blur(5px);
+    transform: translate(-6rem, -2rem);
   }
- 75%{
-    filter: drop-shadow(0rem 0rem 2em rgba(255,255,255,1)) blur(5px);
+  75% {
+    filter: drop-shadow(0rem 0rem 2em rgba(255, 255, 255, 1)) blur(5px);
   }
-  100%{
+  100% {
     transform: translate(0rem, 0rem);
-    filter: drop-shadow(0rem 0rem 3em rgba(255,255,255,1)) blur(5px);
+    filter: drop-shadow(0rem 0rem 3em rgba(255, 255, 255, 1)) blur(5px);
   }
 }
 section.app .row {
@@ -345,7 +362,7 @@ section.app .row {
   gap: 3rem;
   align-items: center;
 }
-section.app .col-animation{
+section.app .col-animation {
   position: relative;
 }
 section.app .cellphone {
@@ -355,15 +372,15 @@ section.app .cellphone {
   animation: cellphone 5s ease-in-out infinite;
 }
 @keyframes cellphone {
-    0%{
-      transform: translate(0rem, 0rem);
-    }
-    50%{
-      transform: translate(-1rem,-1rem);
-    }
-    100%{
-      transform: translate(0rem, 0rem);
-    }
+  0% {
+    transform: translate(0rem, 0rem);
+  }
+  50% {
+    transform: translate(-1rem, -1rem);
+  }
+  100% {
+    transform: translate(0rem, 0rem);
+  }
 }
 section.app .cellphone-2 {
   position: absolute;
@@ -372,13 +389,13 @@ section.app .cellphone-2 {
   animation: cellphone2 5s ease-in-out infinite;
 }
 @keyframes cellphone2 {
-  0%{
+  0% {
     transform: translate(0rem, 0rem);
   }
-  50%{
-    transform: translate(1rem,-1rem);
+  50% {
+    transform: translate(1rem, -1rem);
   }
-  100%{
+  100% {
     transform: translate(0rem, 0rem);
   }
 }
@@ -406,7 +423,30 @@ section.app li::before {
 /*end app*/
 /*price*/
 section.price {
+  position: relative;
   padding: 2rem 0;
+}
+section.price::before {
+  content: '';
+  background: url('../img/details-top.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 5rem;
+  top: -4.99rem;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+section.price::after {
+  content: '';
+  background: url('../img/details-bottom.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 5rem;
+  bottom: -4.99rem;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
 }
 section.price h2 {
   text-align: center;
@@ -460,11 +500,11 @@ section.price .box-gradient-border .price-box p {
 /*end price*/
 /*how to */
 section.how-to {
-  background-image: url('../img/bg-squares2.png');
+  background-image: url('../img/bg-star.png');
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: auto 100%;
   background-position: center;
-  padding: 2rem 0;
+  padding: 7rem 0;
 }
 section.how-to .row-title h2 {
   text-align: center;
@@ -507,13 +547,13 @@ section.how-to .row-road .col img {
   animation: moving 2s ease-in-out infinite;
 }
 @keyframes moving {
-  0%{
+  0% {
     transform: translateX(-0rem) translateY(-0rem);
   }
-  50%{
+  50% {
     transform: translateX(-0.5rem) translateY(-0.5rem);
   }
-  100%{
+  100% {
     transform: translateX(-0rem) translateY(-0rem);
   }
 }
@@ -521,13 +561,13 @@ section.how-to .row-road .col:nth-child(even) img {
   animation: moving2 2s ease-in-out infinite;
 }
 @keyframes moving2 {
-  0%{
+  0% {
     transform: translateX(-0rem) translateY(-0rem);
   }
-  50%{
+  50% {
     transform: translateX(0.5rem) translateY(0.5rem);
   }
-  100%{
+  100% {
     transform: translateX(-0rem) translateY(-0rem);
   }
 }
@@ -615,49 +655,60 @@ section.how-to .btn {
 /*faq*/
 section.faq {
   position: relative;
-  padding: 2rem 0;
+  padding: 2rem 0 7rem 0;
 }
-section.faq img.icon-floating{
+section.faq::before {
+  content: '';
+  background: url('../img/details-top.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 5rem;
+  top: -4.99rem;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+section.faq img.icon-floating {
   position: absolute;
   z-index: 10;
   width: 10rem;
   left: 1rem;
   bottom: 5rem;
-  filter: drop-shadow(0rem 0rem 3em rgba(255,255,255,1)) blur(7px);
+  filter: drop-shadow(0rem 0rem 3em rgba(255, 255, 255, 1)) blur(7px);
   z-index: 1;
   animation: floating-faq 6s ease-in-out infinite;
 }
 @keyframes floating-faq {
-    0%{
-      transform: translate(0rem, 0rem)rotate(-24deg);
-    }
-    50%{
-      transform: translate(4rem, -6rem)rotate(-24deg);
-    }
-    100%{
-      transform: translate(0rem, 0rem)rotate(-24deg);
-    }
+  0% {
+    transform: translate(0rem, 0rem) rotate(-24deg);
+  }
+  50% {
+    transform: translate(4rem, -6rem) rotate(-24deg);
+  }
+  100% {
+    transform: translate(0rem, 0rem) rotate(-24deg);
+  }
 }
-section.faq img.icon-floating2{
+section.faq img.icon-floating2 {
   position: absolute;
   z-index: 10;
   width: 10rem;
   right: 5rem;
-  top:20%;
-  filter: drop-shadow(0rem 0rem 5em rgba(255,255,255,1)) blur(7px);
+  top: 20%;
+  filter: drop-shadow(0rem 0rem 5em rgba(255, 255, 255, 1)) blur(7px);
   animation: floating-faq2 4s ease-in-out infinite;
   z-index: 1;
 }
 @keyframes floating-faq2 {
-    0%{
-      transform: translate(0rem, 0rem)rotate(-50deg);
-    }
-    50%{
-      transform: translate(-2rem, -3rem)rotate(-50deg);
-    }
-    100%{
-      transform: translate(0rem, 0rem)rotate(-50deg);
-    }
+  0% {
+    transform: translate(0rem, 0rem) rotate(-50deg);
+  }
+  50% {
+    transform: translate(-2rem, -3rem) rotate(-50deg);
+  }
+  100% {
+    transform: translate(0rem, 0rem) rotate(-50deg);
+  }
 }
 section.faq h2 {
   text-align: center;
@@ -673,6 +724,18 @@ section.faq .accordion {
 footer {
   background: #180e31;
   padding: 2rem 0;
+  position: relative;
+}
+footer::before {
+  content: '';
+  background: url('../img/details-top2.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 5rem;
+  top: -4.99rem;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
 }
 footer .row {
   display: grid;
@@ -855,16 +918,16 @@ footer .menu-footer li {
     font-size: 1.3rem;
   }
   @keyframes floating-home {
-    0%{
+    0% {
       transform: translate(0rem, 0rem);
     }
-    50%{
+    50% {
       transform: translate(2rem, -3rem);
     }
-    100%{
+    100% {
       transform: translate(0rem, 0rem);
     }
-}
+  }
   /*end home*/
   /*details*/
   section.details .box-gradient-border-content {
@@ -893,23 +956,23 @@ footer .menu-footer li {
     bottom: -8rem;
   }
   @keyframes floating-app {
-    0%{
+    0% {
       transform: translate(0rem, 0rem);
-      filter: drop-shadow(0rem 0rem 3em rgba(255,255,255,1)) blur(5px);
+      filter: drop-shadow(0rem 0rem 3em rgba(255, 255, 255, 1)) blur(5px);
     }
-    35%{
-      filter: drop-shadow(0rem 0rem 2em rgba(255,255,255,1)) blur(5px);
+    35% {
+      filter: drop-shadow(0rem 0rem 2em rgba(255, 255, 255, 1)) blur(5px);
     }
-    50%{
-      filter: drop-shadow(0rem 0rem 3em rgba(255,255,255,1)) blur(5px);
-      transform: translate(-2rem,-1rem);
+    50% {
+      filter: drop-shadow(0rem 0rem 3em rgba(255, 255, 255, 1)) blur(5px);
+      transform: translate(-2rem, -1rem);
     }
-   75%{
-      filter: drop-shadow(0rem 0rem 2em rgba(255,255,255,1)) blur(5px);
+    75% {
+      filter: drop-shadow(0rem 0rem 2em rgba(255, 255, 255, 1)) blur(5px);
     }
-    100%{
+    100% {
       transform: translate(0rem, 0rem);
-      filter: drop-shadow(0rem 0rem 3em rgba(255,255,255,1)) blur(5px);
+      filter: drop-shadow(0rem 0rem 3em rgba(255, 255, 255, 1)) blur(5px);
     }
   }
   /*end app*/
@@ -950,30 +1013,34 @@ footer .menu-footer li {
     padding: 0 1rem;
   }
   /*home*/
-  section.home{
+  section.home {
     aspect-ratio: unset;
     height: 64rem;
     padding: 1rem 0;
   }
-  section.home .bg_video{
+  section.home .bg_video {
     height: 75rem;
     width: auto;
   }
-  section.home .row{
+  section.home .row {
     grid-template-columns: 1fr;
   }
-  section.home .row .col-text{
-    order:2;
+  section.home .row .col-text {
+    order: 2;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  section.home .row .col-animation{
-    order:1;
+  section.home .row .col-animation {
+    order: 1;
   }
   /*end home*/
   /*details*/
+  section.details::after {
+    height: 3rem;
+    bottom: -2.99rem;
+  }
   section.details .box-gradient-border-content {
     width: 30rem;
   }
@@ -997,6 +1064,14 @@ footer .menu-footer li {
   }
   /*end app*/
   /*price*/
+  section.price::before {
+    height: 3rem;
+    top: -2.99rem;
+  }
+  section.price::after {
+    height: 3rem;
+    bottom: -2.99rem;
+  }
   section.price .box-gradient-border {
     width: 30rem;
   }
@@ -1015,6 +1090,18 @@ footer .menu-footer li {
     grid-template-columns: 1fr 9rem;
   }
   /*end how to*/
+  /*faq*/
+  section.faq::before {
+    height: 3rem;
+    top: -2.99rem;
+  }
+  /*end faq*/
+  /*footer*/
+  footer::before {
+    height: 3rem;
+    top: -2.99rem;
+  }
+  /*end footer*/
 }
 
 @media (max-width: 400px) {

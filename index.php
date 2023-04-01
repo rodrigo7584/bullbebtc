@@ -32,25 +32,60 @@
     <title>bullbebtc</title>
   </head>
   <body>
-    <!-- crypto -->
-    <table id="crypto-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nome</th>
-          <th>Símbolo</th>
-          <th>Preço (USD)</th>
-          <th>Capitalização de mercado (USD)</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <!-- crypto -->
-    <style>
-      table {
-        background-color: aliceblue;
-      }
-    </style>
+
+  <?php
+// Define a chave da API CoinMarketCap
+$apiKey = 'd1136de6-b953-4370-b019-eebe1e4b768b';
+
+// Define o endpoint da API CoinMarketCap
+$endpoint = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest';
+
+// Define o parâmetro de consulta para obter as informações das criptomoedas Bitcoin, Ethereum, USDT e USD em reais (BRL)
+$ids = '1,1027,825,2781'; // 1 = Bitcoin, 1027 = Ethereum, 825 = Tether, 2781 = USD Coin
+$convert = 'BRL'; // Moeda de conversão
+
+// Cria uma nova instância do objeto cURL
+$curl = curl_init();
+
+// Configura a solicitação HTTP GET para a API CoinMarketCap
+curl_setopt_array($curl, array(
+  CURLOPT_URL => $endpoint . '?id=' . $ids . '&convert=' . $convert,
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'GET',
+  CURLOPT_HTTPHEADER => array(
+    'X-CMC_PRO_API_KEY: ' . $apiKey
+  ),
+  CURLOPT_SSL_VERIFYPEER => false // Desabilita a verificação do certificado SSL
+));
+
+// Envia a solicitação HTTP GET para a API CoinMarketCap e armazena a resposta
+$response = curl_exec($curl);
+
+// Verifica se houve algum erro durante a solicitação
+if (curl_errno($curl)) {
+  echo 'Erro ao receber resposta da API CoinMarketCap: ' . curl_error($curl);
+} else {
+  // Converte a resposta da API em um objeto JSON
+  $responseObj = json_decode($response);
+
+  // Percorre os dados da resposta e exibe na tela
+  foreach ($responseObj->data as $id => $crypto) {
+    echo $crypto->name . ' (' . $crypto->symbol . ') - Preço (BRL): R$' . number_format($crypto->quote->BRL->price, 2) . ' - Variação (24h): ' . number_format($crypto->quote->BRL->percent_change_24h, 2) . '%<br>';
+  }
+}
+
+// Fecha a conexão cURL
+curl_close($curl);
+?>
+
+
+
+
     <main>
       <section class="main-menu">
         <div class="container">

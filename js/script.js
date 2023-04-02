@@ -26,3 +26,137 @@ accordion.forEach(item => {
     }
   })
 })
+
+function updateBtc() {
+  // Cria um objeto XMLHttpRequest
+  var xhr = new XMLHttpRequest()
+
+  // Configura a requisição
+  xhr.open('GET', 'https://www.mercadobitcoin.net/api/BTC/ticker/', true)
+
+  // Configura o callback para quando a resposta chegar
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Converte a resposta JSON em um objeto
+        var data = JSON.parse(xhr.responseText)
+
+        // Obtém a cotação atual do Bitcoin em reais (BRL)
+        var btcBrl = data.ticker.last
+
+        // Atualiza o elemento
+        var btcBrlElement = document.querySelector('.btc-price')
+        console.log(typeof parseInt(btcBrl))
+        let formatted = parseInt(btcBrl).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        })
+        btcBrlElement.innerHTML = formatted
+      } else {
+        console.log('Erro na requisição: ' + xhr.status)
+      }
+    }
+  }
+
+  // Envia a requisição
+  xhr.send()
+}
+
+// Chama a função para atualizar a cotação imediatamente
+updateBtc()
+
+// Chama a função a cada minuto
+setInterval(updateBtc, 60000) // 60000 milissegundos = 1 minuto
+
+function updateEth() {
+  var xhr = new XMLHttpRequest()
+
+  xhr.open('GET', 'https://www.mercadobitcoin.net/api/ETH/ticker/', true)
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        var data = JSON.parse(xhr.responseText)
+
+        var ethBrl = data.ticker.last
+
+        var ethBrlElement = document.querySelector('.eth-price')
+        console.log(typeof parseInt(ethBrl))
+        let formatted = parseInt(ethBrl).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        })
+        ethBrlElement.innerHTML = formatted
+      } else {
+        console.log('Erro na requisição: ' + xhr.status)
+      }
+    }
+  }
+  xhr.send()
+}
+
+updateEth()
+
+setInterval(updateEth, 60000)
+
+function updateUSDT() {
+  var xhr = new XMLHttpRequest()
+
+  xhr.open('GET', 'https://www.mercadobitcoin.net/api/USDT/ticker/', true)
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        var data = JSON.parse(xhr.responseText)
+
+        var usdtBrl = data.ticker.last
+
+        var usdtBrlElement = document.querySelector('.usdt-price')
+        console.log(typeof parseInt(usdtBrl))
+        let formatted = parseInt(usdtBrl).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        })
+        usdtBrlElement.innerHTML = formatted
+      } else {
+        console.log('Erro na requisição: ' + xhr.status)
+      }
+    }
+  }
+  xhr.send()
+}
+
+updateUSDT()
+
+setInterval(updateUSDT, 60000)
+
+function updateUSDP() {
+  var xhr = new XMLHttpRequest()
+
+  xhr.open('GET', 'https://www.mercadobitcoin.net/api/USDP/ticker/', true)
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        var data = JSON.parse(xhr.responseText)
+
+        var usdpBrl = data.ticker.last
+
+        var usdpBrlElement = document.querySelector('.usdp-price')
+        console.log(typeof parseInt(usdpBrl))
+        let formatted = parseInt(usdpBrl).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        })
+        usdpBrlElement.innerHTML = formatted
+      } else {
+        console.log('Erro na requisição: ' + xhr.status)
+      }
+    }
+  }
+  xhr.send()
+}
+
+updateUSDP()
+
+setInterval(updateUSDP, 60000)

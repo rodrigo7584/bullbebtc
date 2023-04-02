@@ -1,3 +1,52 @@
+<?php
+  $apiKey = 'd1136de6-b953-4370-b019-eebe1e4b768b';
+  $endpoint = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest';
+  $ids = '1,1027,825,2781'; // 1 = Bitcoin, 1027 = Ethereum, 825 = Tether, 2781 = USD Coin
+  $convert = 'BRL';
+
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => $endpoint . '?id=' . $ids . '&convert=' . $convert,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+      "Accept: application/json",
+      "X-CMC_PRO_API_KEY:". $apiKey
+    ),
+    CURLOPT_SSL_VERIFYHOST => false,
+    CURLOPT_SSL_VERIFYPEER => false
+  ));
+
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+
+  curl_close($curl);
+
+  if ($err) {
+    echo "Erro ao receber resposta da API CoinMarketCap: " . $err;
+  } else {
+    $responseObj = json_decode($response);
+    $currencies = array();
+
+    foreach ($responseObj->data as $id => $crypto) {
+      $currency = new stdClass();
+      $currency->name = $crypto->name;
+      $currency->symbol = $crypto->symbol;
+      $currency->price_brl = number_format($crypto->quote->BRL->price, 2);
+      $currency->percent_change_24h = number_format($crypto->quote->BRL->percent_change_24h, 2);
+      $currencies[] = $currency;
+    }
+
+    // foreach ($currencies as $currency) {
+    //   echo $currency->name . ' (' . $currency->symbol . ') - Preço (BRL): R$' . $currency->price_brl . ' - Variação (24h): ' . $currency->percent_change_24h . '%<br>';
+    // }
+  }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -183,7 +232,7 @@
                     </div>
                     <p>Bitcoin</p>
                     <div class="price-box">
-                      <p class="btc-price"></p>
+                      <p><?php echo $currencies[0]->price_brl;?> BRL</p>
                     </div>
                   </div>
                 </div>
@@ -200,7 +249,7 @@
                     </div>
                     <p>Ethereum</p>
                     <div class="price-box">
-                      <p class="eth-price"></p>
+                      <p><?php echo $currencies[2]->price_brl;?> BRL</p>
                     </div>
                   </div>
                 </div>
@@ -213,7 +262,7 @@
                     </div>
                     <p>USDT</p>
                     <div class="price-box">
-                      <p class="usdt-price"></p>
+                      <p><?php echo $currencies[1]->price_brl;?> BRL</p>
                     </div>
                   </div>
                 </div>
@@ -226,7 +275,7 @@
                     </div>
                     <p>USD</p>
                     <div class="price-box">
-                      <p class="usdp-price"></p>
+                      <p><?php echo $currencies[3]->price_brl;?> BRL</p>
                     </div>
                   </div>
                 </div>

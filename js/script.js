@@ -46,8 +46,8 @@ function updateBtc() {
 
         // Atualiza o elemento
         var btcBrlElement = document.querySelector('.btc-price')
-        console.log(typeof parseInt(btcBrl))
-        let formatted = parseInt(btcBrl).toLocaleString('pt-BR', {
+        console.log(typeof parseFloat(btcBrl))
+        let formatted = parseFloat(btcBrl).toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL'
         })
@@ -81,8 +81,8 @@ function updateEth() {
         var ethBrl = data.ticker.last
 
         var ethBrlElement = document.querySelector('.eth-price')
-        console.log(typeof parseInt(ethBrl))
-        let formatted = parseInt(ethBrl).toLocaleString('pt-BR', {
+        console.log(typeof parseFloat(ethBrl))
+        let formatted = parseFloat(ethBrl).toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL'
         })
@@ -112,8 +112,8 @@ function updateUSDT() {
         var usdtBrl = data.ticker.last
 
         var usdtBrlElement = document.querySelector('.usdt-price')
-        console.log(typeof parseInt(usdtBrl))
-        let formatted = parseInt(usdtBrl).toLocaleString('pt-BR', {
+        console.log(typeof parseFloat(usdtBrl))
+        let formatted = parseFloat(usdtBrl).toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL'
         })
@@ -143,8 +143,8 @@ function updateUSDP() {
         var usdpBrl = data.ticker.last
 
         var usdpBrlElement = document.querySelector('.usdp-price')
-        console.log(typeof parseInt(usdpBrl))
-        let formatted = parseInt(usdpBrl).toLocaleString('pt-BR', {
+        console.log(typeof parseFloat(usdpBrl))
+        let formatted = parseFloat(usdpBrl).toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL'
         })

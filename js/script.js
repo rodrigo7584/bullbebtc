@@ -160,3 +160,30 @@ function updateUSDP() {
 updateUSDP()
 
 setInterval(updateUSDP, 60000)
+
+document.addEventListener('DOMContentLoaded', function () {
+  var cookieBox = document.getElementById('cookie-box')
+  var rejectBtn = document.getElementById('reject-btn')
+  var acceptBtn = document.getElementById('accept-btn')
+
+  rejectBtn.addEventListener('click', function () {
+    var expirationDate = new Date(0)
+    document.cookie =
+      'cookiesAccepted=false; expires=' + expirationDate.toUTCString()
+
+    cookieBox.style.display = 'none'
+  })
+
+  acceptBtn.addEventListener('click', function () {
+    var expirationDate = new Date()
+    expirationDate.setFullYear(expirationDate.getFullYear() + 1)
+    document.cookie =
+      'cookiesAccepted=true; expires=' + expirationDate.toUTCString()
+
+    cookieBox.style.display = 'none'
+  })
+
+  if (document.cookie.indexOf('cookiesAccepted=true') === -1) {
+    cookieBox.classList.remove('hidden')
+  }
+})
